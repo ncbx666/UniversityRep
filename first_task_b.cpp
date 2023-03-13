@@ -72,7 +72,7 @@ int main() {
 		num.push_back(0);
 	}
 	unsigned char a;
-	string alph = "ÀàÁáÂâÃãÄäÅå¨¸ÆæÇçÈèÉéÊêËëÌìÍíÎîÏïÐðÑñÒòÓóÔôÕõÖö×÷ØøÙùÚúÛûÜüÝýÞþßÿ"; //there was Russian alphabet
+	string alph = "Аа"; //there was Russian alphabet
 	string text;
 	ifstream f;
 	f.open("idiot.txt");
