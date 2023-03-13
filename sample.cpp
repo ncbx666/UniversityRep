@@ -12,7 +12,7 @@ int len(string& s) {
 }
 int main() {
 	setlocale(LC_ALL, "RUS");
-	int summ=0;
+	int ans=1;
 	unsigned char a;
 	string text;
 	ifstream f;
@@ -22,11 +22,11 @@ int main() {
 		f >> text;
 		for (int i = 0; i < len(text); i++) {
 			a=text[i];
-			summ += (int)a;
+			ans *= (int)a;
 		}
 		
 	}
-	cout << summ << "\n";
+	cout << ans << "\n";
 	f.close();
 	return 0;
 }
