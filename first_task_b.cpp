@@ -9,7 +9,7 @@ void copy(vector<int>& a, vector<int>& b) {
 	for (int i = 0; i < b.size(); i++) {
 		a.push_back(b[i]);
 	}
-}//копирование массива в другой
+}//copying an array to another array
 int ind(int z, vector<int>& a) {
 	int ans;
 	for (int i = 0; i < a.size(); i++) {
@@ -19,7 +19,7 @@ int ind(int z, vector<int>& a) {
 		}
 	}
 	return ans;
-} //поиск индекса элемента в массиве
+} //index of element in array
 void bubble(vector<int> &m)
 {
 	for (int i =0; i <m.size(); i++)
@@ -32,15 +32,15 @@ void bubble(vector<int> &m)
 				m[j + 1] = foo;
 			}
 		}
-}//сортировка массива по убыванию
+}//sorting the array in descending order
 int index_alph(char a, string& s) {
 	int i = 0;
 	while (s[i] != '\0') {
 		if (s[i] == a) break;
 		i++;
 	}
-	return i / 2; //чтобы не было разницы больша€ или маленька€ буква
-} //поиск индекса символа в алфавите
+	return i / 2; //so that there is no difference between a large or a small letter
+} //search for the index of a symbol in the alphabet
 int find(char a, string& s) {
 	int i = 0;
 	int p = 0;
@@ -56,14 +56,14 @@ int find(char a, string& s) {
 	else {
 		return 0;
 	}
-}// поиск символа в строке
+}// searching for character in string
 int len(string& s) {
 	int i = 0;
 	while (s[i] != '\0') {
 		i++;
 	}
 	return i;
-}//длина строки
+}//length of string
 int main() {
 	setlocale(LC_ALL, "RUS");
 	vector<int> num;
@@ -72,15 +72,15 @@ int main() {
 		num.push_back(0);
 	}
 	unsigned char a;
-	string alph = "јаЅб¬в√гƒд≈е®Є∆ж«з»и…й кЋлћмЌнќоѕп–р—с“т”у‘ф’х÷ц„чЎшўщЏъџы№ьЁэёюя€"; //алфавит
-	string text; //сюда записываем строку
+	string alph = "√А√†√Б√°√В√Ґ√Г√£√Д√§√Е√•¬®¬Є√Ж√¶√З√І√И√®√Й√©√К√™√Л√Ђ√М√ђ√Н√≠√О√Ѓ√П√ѓ√Р√∞√С√±√Т√≤√У√≥√Ф√і√Х√µ√Ц√ґ√Ч√Ј√Ш√Є√Щ√є√Ъ√Ї√Ы√ї√Ь√Љ√Э√љ√Ю√Њ√Я√њ"; //there was Russian alphabet
+	string text;
 	ifstream f;
 	f.open("idiot.txt");
-	while (!f.eof()) { //чтение файла
+	while (!f.eof()) { //reading a file
 		getline(f, text);
 		for (int i = 0; i < len(text); i++) {
-			if (find(text[i],alph) == 1) { //проверка на нахождение символа в русском алфавите
-				num[index_alph(text[i], alph)] += 1; //подсчет букв
+			if (find(text[i],alph) == 1) { //checking for the presence of a symbol in Russian alphabet
+				num[index_alph(text[i], alph)] += 1;
 			}
 		}
 	}
@@ -88,7 +88,7 @@ int main() {
 	copy(num_copy, num);
 	bubble(num_copy);
 	for (int i = 0; i < num_copy.size(); i++) {
-		cout << alph[ind(num_copy[i],num)*2] << ' '; //ответ
+		cout << alph[ind(num_copy[i],num)*2] << ' '; //answer
 	}cout << endl;
 	return 0;
 }
