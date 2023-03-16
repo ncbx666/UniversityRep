@@ -1,7 +1,7 @@
 #include<iostream>
 #include<string>
 #include<vector>
-#include<ifstream>
+#include<fstream>
 using namespace std;
 int main() {
 	int numbers[26] = {};
