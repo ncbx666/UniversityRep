@@ -20,7 +20,7 @@ int len(string& s) {
 		i++;
 	}
 	return i;
-}//длина строки
+}
 int hashfoo(string& line) {
 	long sum = 0;
 	for (int i = 0; i < len(line); i++) {
