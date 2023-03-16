@@ -2,6 +2,7 @@
 #include<string>
 #include<vector>
 #include<ifstream>
+using namespace std;
 int main() {
 	int numbers[26] = {};
 	ifstream f;
