@@ -1,3 +1,7 @@
+#include<iostream>
+#include<string>
+#include<vector>
+#include<ifstream>
 int main() {
 	int numbers[26] = {};
 	ifstream f;
