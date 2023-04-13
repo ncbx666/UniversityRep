@@ -1,6 +1,7 @@
 ﻿#include<iostream>
 #include<vector>
 #include<string>
+#include<fstream>
 using namespace std;
 bool findd(vector<int> a,int key) { 
 	bool flag = 1;
@@ -11,25 +12,27 @@ bool findd(vector<int> a,int key) {
 	}
 	return flag;
 }
-
-
 int main(){
-	int n = 5;
-	int** ms = new int* [n];
-	for (int i = 0; i < n; i++) {
-		ms[i] = new int[n];
+	int dlina;
+	cout << "enter the size of graph";
+	cin >> dlina;
+	int** ms = new int* [dlina];
+	for (int i = 0; i < dlina; i++) {
+		ms[i] = new int[dlina];
 	}
-	for (int i = 0; i < n; i++) {
-		for (int j = i+1; j < n; j++) {
-			cin >> ms[i][j];
-			ms[j][i] = ms[i][j];
-			if (i == j) {
-				ms[i][j] = 1e10;
-			}
+	ifstream f;
+	f.open("myGraph.txt");
+	for (int i = 0; i < dlina; i++) {
+		for (int j = 0; j < dlina; j++) {
+			int b;
+			f >> b;
+			ms[i][j] = b;
 		}
 	}
-	for (int i = 0; i < n; i++) {
-		for (int j = i + 1; j < n; j++) {
+	f.close();
+	
+	for (int i = 0; i < dlina; i++) {
+		for (int j = i + 1; j < dlina; j++) {
 				if(ms[i][j]==0){
 				ms[i][j] = 1e10; // убрали все нули
 			}
@@ -37,7 +40,7 @@ int main(){
 	}
 	int minimum = 0;
 	vector<int> vert;
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < dlina; i++) {
 		vert.push_back(i);
 	}
 	vector<int> used = {0};
@@ -47,7 +50,7 @@ int main(){
 		int vertic;
 		for (int i = 0; i < used.size(); i++) { // прохожусь по всем использованным вершинам
 			int k = used[i]; // берем текущую использованную вершину
-			for (int j = k; j < n; j++) { // перебираем все вершины, инцидентные данной и ищем минимальный вес ребра
+			for (int j = k; j < dlina; j++) { // перебираем все вершины, инцидентные данной и ищем минимальный вес ребра
 				if (findd(used, j)) { // если вершина в использованных, то тогда не перебираем, чтобы не было повторяющихся ребер.
 					if (ms[k][j] < minim) {
 						minim = ms[k][j];
@@ -60,7 +63,6 @@ int main(){
 		used.push_back(vertic); // добавляем вершину в использованные
 		vert.erase(remove(vert.begin(), vert.end(), vertic), vert.end()); //удаляем использованную вершину из нашего исходного графа
 	}
-	cout << "the shortest path=";
-	cout << minimum; 
+	cout << "the shortest weight=" << minimum; 
 	return 0;
 }
